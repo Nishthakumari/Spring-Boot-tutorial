@@ -2,6 +2,8 @@ package com.nishtha.restapi.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -32,5 +34,10 @@ public class BookService {
     public Book addBook(Book b) {
         list.add(b);
         return b;
+    }
+
+    public void deleteBook(int bid) {
+        list = list.stream().filter(book -> book.getId() != bid).collect(Collectors.toList());
+    
     }
 }
