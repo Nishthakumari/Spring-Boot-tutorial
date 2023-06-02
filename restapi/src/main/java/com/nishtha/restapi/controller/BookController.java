@@ -58,7 +58,7 @@ public class BookController {
 
         try {
             bk = this.bookService.addBook(b);
-            return ResponseEntity.of(Optional.of(bk));
+            return ResponseEntity.status(HttpStatus.CREATED).body(bk);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -92,7 +92,6 @@ public class BookController {
 
         }
 
-    
     }
 
 }
