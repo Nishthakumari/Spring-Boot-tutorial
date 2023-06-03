@@ -1,10 +1,14 @@
 package com.nishtha.restapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Author {
@@ -18,6 +22,10 @@ public class Author {
     private String lastName;
 
     private String language;
+
+    @OneToOne(mappedBy = "author")
+    @JsonBackReference
+    private Book book;
 
     public Author() {
     }
